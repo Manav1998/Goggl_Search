@@ -22,13 +22,13 @@ const getUriString = (loc) => {
 }
 
 export const Results = () => {
-  const { results, isLoading, getResults, errorMsg } = useResultContext();
+  const { results, isLoading, getResults, errorMsg, searchParam } = useResultContext();
   const location = useLocation();
 
   useEffect(() => {
     getResults(getUriString(location.pathname))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+  }, [location.pathname, searchParam])
 
   if (isLoading) {
     return (
